@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="fast" nsURI="http://fr.ubo.fast" nsPrefix="fast">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="TimeSeriesFramework">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="differentNamesSensors differentNamesMeasuredVariables differentNamesMetaData differentNamesTimeSeries differentNamesMinMaxVisualizationClients differentNamesComputers differentNamesContainers differentNamesServices differentNamesNetworks differentNamesNetworkInterfaces differentNamesScales differentNamesDockerDeployments"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="differentNamesSensors" value="&#xA;&#x9;&#x9;&#x9;Sensor.allInstances() -> forAll(sensor_1, sensor_2 | sensor_1 &lt;> sensor_2 implies sensor_1.name &lt;> sensor_2.name)"/>
+      <details key="differentNamesMeasuredVariables" value="&#xA;&#x9;&#x9;&#x9;MeasuredVariable.allInstances() -> forAll(variable_1, variable_2 | variable_1 &lt;> variable_2 implies variable_1.name &lt;> variable_2.name)"/>
+      <details key="differentNamesMetaData" value="&#xA;&#x9;&#x9;&#x9;MetaData.allInstances() -> forAll(data_1, data_2 | data_1 &lt;> data_2 implies data_1.name &lt;> data_2.name)"/>
+      <details key="differentNamesTimeSeries" value="&#xA;&#x9;&#x9;&#x9;TimeSeries.allInstances() -> forAll(series_1, series_2 | series_1 &lt;> series_2 implies series_1.name &lt;> series_2.name)"/>
+      <details key="differentNamesMinMaxVisualizationClients" value="&#xA;&#x9;&#x9;&#x9;MinMaxVisualizationClient.allInstances() -> forAll(client_1, client_2 | client_1 &lt;> client_2 implies client_1.name &lt;> client_2.name)"/>
+      <details key="differentNamesComputers" value="&#xA;&#x9;&#x9;&#x9;Computer.allInstances() -> forAll(computer_1, computer_2 | computer_1 &lt;> computer_2 implies computer_1.name &lt;> computer_2.name)"/>
+      <details key="differentNamesContainers" value="&#xA;&#x9;&#x9;&#x9;Container.allInstances() -> forAll(container_1, container_2 | container_1 &lt;> container_2 implies container_1.name &lt;> container_2.name)"/>
+      <details key="differentNamesServices" value="&#xA;&#x9;&#x9;&#x9;Service.allInstances() -> forAll(service_1, service_2 | service_1 &lt;> service_2 implies service_1.name &lt;> service_2.name)"/>
+      <details key="differentNamesNetworks" value="&#xA;&#x9;&#x9;&#x9;Network.allInstances() -> forAll(network_1, network_2 | network_1 &lt;> network_2 implies network_1.name &lt;> network_2.name)"/>
+      <details key="differentNamesNetworkInterfaces" value="&#xA;&#x9;&#x9;&#x9;NetworkInterface.allInstances() -> forAll(network_interface_1, network_interface_2 | network_interface_1 &lt;> network_interface_2 implies network_interface_1.name &lt;> network_interface_2.name)"/>
+      <details key="differentNamesScales" value="&#xA;&#x9;&#x9;&#x9;Scale.allInstances() -> forAll(scale_1, scale_2 | scale_1 &lt;> scale_2 implies scale_1.name &lt;> scale_2.name)"/>
+      <details key="differentNamesDockerDeployments" value="&#xA;&#x9;&#x9;&#x9;DockerDeployment.allInstances() -> forAll(deployment_1, deployment_2 | deployment_1 &lt;> deployment_2 implies deployment_1.name &lt;> deployment_2.name)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data" lowerBound="1" eType="#//Data"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="platform" lowerBound="1"
+        eType="#//Platform" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clients" lowerBound="1"
+        upperBound="-1" eType="#//VisualizationClient" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Data">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="timeSeriesData" lowerBound="1"
+        upperBound="-1" eType="#//TimeSeries" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sensorsData" lowerBound="1"
+        upperBound="-1" eType="#//Sensor" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Sensor" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sensorMetaData" upperBound="-1"
+        eType="#//MetaData" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sensorMeasuredVariables"
+        lowerBound="1" upperBound="-1" eType="#//MeasuredVariable" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MeasuredVariable" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" lowerBound="1" eType="#//MeasurementDataUnit"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="measuredVariableMetaData"
+        upperBound="-1" eType="#//MetaData" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MetaData" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TimeSeries" eSuperTypes="#//NamedElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="periodPositive"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="periodPositive" value="&#xA;&#x9;&#x9;&#x9;self.period > 0"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="startTime" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endTime" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="timeSeriesMeasuredVariable"
+        lowerBound="1" eType="#//MeasuredVariable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="timeSeriesDataSource" lowerBound="1"
+        eType="#//DataSource"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MinMaxVisualizationClient" eSuperTypes="#//NamedElement #//VisualizationClient">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clientComputer" lowerBound="1"
+        eType="#//Computer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="chartWidth" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="800"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="chartHeight" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="400"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="userPolicy" lowerBound="1"
+        eType="#//UserPolicy"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clientScale" lowerBound="1"
+        eType="#//Scale" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rawDataThreshold" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="preComputedDataThreshold"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="userTime" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="250.0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pingTime" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="timeSeriesSelected" lowerBound="1"
+        eType="#//TimeSeries"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="axisFactor" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="10"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Platform">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="computersPlatform" lowerBound="1"
+        upperBound="-1" eType="#//Computer" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="networksPlatform" lowerBound="1"
+        upperBound="-1" eType="#//Network" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Computer" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="os" lowerBound="1" eType="#//OSType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ramMemory" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="16384"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="storageMemory" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="512000"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cpuNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="2"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cpuFrequency" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="3200"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cpuCoresNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="8"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="computerServices" upperBound="-1"
+        eType="#//Service" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="computerNetworkInterfaces"
+        lowerBound="1" upperBound="-1" eType="#//NetworkInterface"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deployment" eType="#//DockerDeployment"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="username" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Service" abstract="true" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Database" eSuperTypes="#//DataSource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dbms" lowerBound="1" eType="#//DatabaseType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="5432"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="username" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataDirectory" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WebServer" eSuperTypes="#//Service">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="8080"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="proxy" upperBound="-1"
+        eType="#//DataSource"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//WebServerType"
+        defaultValueLiteral="GeoServer"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MeasurementDataUnit">
+    <eLiterals name="Celsius"/>
+    <eLiterals name="Meter" value="1"/>
+    <eLiterals name="MeterPerSecond" value="2"/>
+    <eLiterals name="Bar" value="3"/>
+    <eLiterals name="Liter" value="4"/>
+    <eLiterals name="Gram" value="5"/>
+    <eLiterals name="Radian" value="6"/>
+    <eLiterals name="None" value="7"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Period">
+    <eLiterals name="Millisecond" literal="Millisecond"/>
+    <eLiterals name="Second" value="1" literal="Second"/>
+    <eLiterals name="Minute" value="2" literal="Minute"/>
+    <eLiterals name="Hour" value="3" literal="Hour"/>
+    <eLiterals name="Day" value="4" literal="Day"/>
+    <eLiterals name="Month" value="5" literal="Month"/>
+    <eLiterals name="Year" value="6" literal="Year"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DatabaseType">
+    <eLiterals name="TimeScaleDB"/>
+    <eLiterals name="InfluxDB" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OSType">
+    <eLiterals name="Linux"/>
+    <eLiterals name="Windows" value="1"/>
+    <eLiterals name="MacOS" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Container" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containerServices" lowerBound="1"
+        upperBound="-1" eType="#//Service" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containerNetworkInterface"
+        lowerBound="1" eType="#//NetworkInterface"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Network" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="prefix" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mask" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gateway" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="networkInterfaces" lowerBound="1"
+        upperBound="-1" eType="#//NetworkInterface" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NetworkInterface" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ipAddress" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataSource" abstract="true" eSuperTypes="#//Service"/>
+  <eClassifiers xsi:type="ecore:EClass" name="File" eSuperTypes="#//DataSource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="UserPolicy">
+    <eLiterals name="NavigationDirections" literal="NavigationDirections"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Scale" abstract="true" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CalendarScale" eSuperTypes="#//Scale">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="periods" unique="false"
+        lowerBound="1" upperBound="-1" eType="#//Period"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="factors" unique="false"
+        lowerBound="1" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FactorScale" eSuperTypes="#//Scale">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="factor" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="2"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="zoomsNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="10"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VisualizationClient" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DockerDeployment" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="directory" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deploymentContainers" lowerBound="1"
+        upperBound="-1" eType="#//Container" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="WebServerType">
+    <eLiterals name="GeoServer" literal="GeoServer"/>
+    <eLiterals name="Apache" value="1" literal="Apache"/>
+  </eClassifiers>
+</ecore:EPackage>

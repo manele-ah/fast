@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated fast -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="fr.ubo.fast.presentation.FastModelWizardID"
+            name="%_UI_FastModelWizard_label"
+            class="fr.ubo.fast.presentation.FastModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/FastModelFile.gif">
+         <description>%_UI_FastModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated fast -->
+      <editor
+            id="fr.ubo.fast.presentation.FastEditorID"
+            name="%_UI_FastEditor_label"
+            icon="icons/full/obj16/FastModelFile.gif"
+            extensions="fast"
+            class="fr.ubo.fast.presentation.FastEditor"
+            contributorClass="fr.ubo.fast.presentation.FastActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
