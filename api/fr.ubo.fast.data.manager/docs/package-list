@@ -1,0 +1,9 @@
+fr.ubo.fast.data.manager.configuration
+fr.ubo.fast.data.manager.controller
+fr.ubo.fast.data.manager.converter
+fr.ubo.fast.data.manager.dao
+fr.ubo.fast.data.manager.dao.jdbc
+fr.ubo.fast.data.manager.factory
+fr.ubo.fast.data.manager.service
+fr.ubo.fast.data.manager.service.jdbc
+fr.ubo.fast.data.manager.utility

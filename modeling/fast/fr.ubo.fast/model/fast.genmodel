@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/fr.ubo.fast/src-gen" creationIcons="false" editDirectory="/fr.ubo.fast.edit/src-gen"
+    editorDirectory="/fr.ubo.fast.editor/src-gen" modelPluginID="fr.ubo.fast" modelName="Fast"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    editPluginID="fr.ubo.fast.edit" editorPluginID="fr.ubo.fast.editor" operationReflection="true"
+    importOrganizing="true">
+  <foreignModel>fast.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Fast" basePackage="fr.ubo" disposableProviderFactory="true"
+      ecorePackage="fast.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="fast.ecore#//MeasurementDataUnit">
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//MeasurementDataUnit/METER"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//MeasurementDataUnit/METER_PER_SECOND"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//MeasurementDataUnit/METER_PER_SECOND_SQUARED"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//MeasurementDataUnit/DEGREE_CELSIUS"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//MeasurementDataUnit/RADIAN"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//MeasurementDataUnit/RADIAN_PER_SECOND"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//MeasurementDataUnit/BAR"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//MeasurementDataUnit/LITER"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//MeasurementDataUnit/GRAM"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//MeasurementDataUnit/NONE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="fast.ecore#//Period">
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//Period/MILLISECOND"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//Period/SECOND"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//Period/MINUTE"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//Period/HOUR"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//Period/DAY"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//Period/MONTH"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//Period/YEAR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="fast.ecore#//DatabaseType">
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//DatabaseType/TIME_SCALE_DB"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//DatabaseType/INFLUX_DB"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="fast.ecore#//OSType">
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//OSType/LINUX"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//OSType/WINDOWS"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//OSType/MAC_OS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="fast.ecore#//UserPolicy">
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//UserPolicy/NAVIGATION_DIRECTIONS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="fast.ecore#//WebServerType">
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//WebServerType/GEO_SERVER"/>
+      <genEnumLiterals ecoreEnumLiteral="fast.ecore#//WebServerType/APACHE"/>
+    </genEnums>
+    <genClasses ecoreClass="fast.ecore#//TimeSeriesFramework">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fast.ecore#//TimeSeriesFramework/observationPlatform"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fast.ecore#//TimeSeriesFramework/architecture"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fast.ecore#//TimeSeriesFramework/clients"/>
+    </genClasses>
+    <genClasses ecoreClass="fast.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="fast.ecore#//ObservationPlatform">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fast.ecore#//ObservationPlatform/sensors"/>
+    </genClasses>
+    <genClasses ecoreClass="fast.ecore#//Sensor">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fast.ecore#//Sensor/measures"/>
+    </genClasses>
+    <genClasses ecoreClass="fast.ecore#//MeasuredVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//MeasuredVariable/unit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fast.ecore#//MeasuredVariable/produces"/>
+    </genClasses>
+    <genClasses ecoreClass="fast.ecore#//TimeSeries">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//TimeSeries/startTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//TimeSeries/endTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//TimeSeries/period"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fast.ecore#//TimeSeries/timeSeriesDataSource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//TimeSeries/id"/>
+    </genClasses>
+    <genClasses ecoreClass="fast.ecore#//MinMaxVisualizationClient">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fast.ecore#//MinMaxVisualizationClient/clientComputer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//MinMaxVisualizationClient/chartWidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//MinMaxVisualizationClient/chartHeight"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//MinMaxVisualizationClient/userPolicy"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fast.ecore#//MinMaxVisualizationClient/clientScale"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//MinMaxVisualizationClient/rawDataThreshold"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//MinMaxVisualizationClient/preComputedDataThreshold"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//MinMaxVisualizationClient/userTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//MinMaxVisualizationClient/pingTime"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fast.ecore#//MinMaxVisualizationClient/selectedTimeSeries"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//MinMaxVisualizationClient/axisFactor"/>
+    </genClasses>
+    <genClasses ecoreClass="fast.ecore#//Architecture">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fast.ecore#//Architecture/computers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fast.ecore#//Architecture/networks"/>
+    </genClasses>
+    <genClasses ecoreClass="fast.ecore#//Computer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//Computer/os"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//Computer/ramMemory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//Computer/storageMemory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//Computer/cpuNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//Computer/cpuFrequency"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//Computer/cpuCoresNumber"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fast.ecore#//Computer/computerServices"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fast.ecore#//Computer/computerInterfaces"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fast.ecore#//Computer/deployment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//Computer/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//Computer/password"/>
+    </genClasses>
+    <genClasses ecoreClass="fast.ecore#//Service"/>
+    <genClasses ecoreClass="fast.ecore#//Database">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//Database/dbms"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//Database/port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//Database/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//Database/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//Database/dataDirectory"/>
+    </genClasses>
+    <genClasses ecoreClass="fast.ecore#//WebServer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//WebServer/port"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fast.ecore#//WebServer/proxy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//WebServer/type"/>
+    </genClasses>
+    <genClasses ecoreClass="fast.ecore#//Container">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fast.ecore#//Container/services"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fast.ecore#//Container/containerInterface"/>
+    </genClasses>
+    <genClasses ecoreClass="fast.ecore#//Network">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//Network/prefix"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//Network/mask"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//Network/gateway"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//Network/domainName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fast.ecore#//Network/interfaces"/>
+    </genClasses>
+    <genClasses ecoreClass="fast.ecore#//NetworkInterface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//NetworkInterface/ipAddress"/>
+    </genClasses>
+    <genClasses ecoreClass="fast.ecore#//DataSource"/>
+    <genClasses ecoreClass="fast.ecore#//File">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//File/path"/>
+    </genClasses>
+    <genClasses ecoreClass="fast.ecore#//Scale"/>
+    <genClasses ecoreClass="fast.ecore#//CalendarScale">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//CalendarScale/periods"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//CalendarScale/factors"/>
+    </genClasses>
+    <genClasses ecoreClass="fast.ecore#//FactorScale">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//FactorScale/factor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//FactorScale/zoomsNumber"/>
+    </genClasses>
+    <genClasses ecoreClass="fast.ecore#//VisualizationClient"/>
+    <genClasses ecoreClass="fast.ecore#//DockerDeployment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fast.ecore#//DockerDeployment/directory"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fast.ecore#//DockerDeployment/containers"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

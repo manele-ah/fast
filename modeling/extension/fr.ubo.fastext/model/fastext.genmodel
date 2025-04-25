@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/fr.ubo.fastext/src-gen" creationIcons="false"
+    editDirectory="/fr.ubo.fastext.edit/src-gen" editorDirectory="/fr.ubo.fastext.editor/src-gen"
+    modelPluginID="fr.ubo.fastext" modelName="Fastext" editPluginClass="fr.ubo.fastext.provider.fastextEditPlugin"
+    editorPluginClass="fr.ubo.fastext.presentation.fastextEditorPlugin" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" testSuiteClass="fr.ubo.fastext.tests.fastextAllTests" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" editPluginID="fr.ubo.fastext.edit"
+    editorPluginID="fr.ubo.fastext.editor" operationReflection="true" importOrganizing="true">
+  <foreignModel>fastext.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Fastext" basePackage="fr.ubo" disposableProviderFactory="true"
+      ecorePackage="fastext.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="fastext.ecore#//Period">
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//Period/MILLISECOND"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//Period/SECOND"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//Period/MINUTE"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//Period/HOUR"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//Period/DAY"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//Period/MONTH"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//Period/YEAR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="fastext.ecore#//DatabaseType">
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//DatabaseType/TIME_SCALE_DB"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//DatabaseType/INFLUX_DB"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="fastext.ecore#//OSType">
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//OSType/LINUX"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//OSType/WINDOWS"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//OSType/MAC_OS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="fastext.ecore#//WebServerType">
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//WebServerType/GEO_SERVER"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//WebServerType/APACHE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="fastext.ecore#//AggregationType">
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//AggregationType/MIN"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//AggregationType/MAX"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//AggregationType/AVERAGE"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//AggregationType/MEDIAN"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//AggregationType/FIRST_QUARTILE"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//AggregationType/LAST_QUARTILE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="fastext.ecore#//MeasurementDataUnit">
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//MeasurementDataUnit/METER"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//MeasurementDataUnit/METER_PER_SECOND"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//MeasurementDataUnit/METER_PER_SECOND_SQUARED"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//MeasurementDataUnit/DEGREE_CELSIUS"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//MeasurementDataUnit/RADIAN"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//MeasurementDataUnit/RADIAN_PER_SECOND"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//MeasurementDataUnit/BAR"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//MeasurementDataUnit/LITER"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//MeasurementDataUnit/GRAM"/>
+      <genEnumLiterals ecoreEnumLiteral="fastext.ecore#//MeasurementDataUnit/NONE"/>
+    </genEnums>
+    <genClasses ecoreClass="fastext.ecore#//TimeSeriesFramework">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fastext.ecore#//TimeSeriesFramework/observationPlatform"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fastext.ecore#//TimeSeriesFramework/architecture"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fastext.ecore#//TimeSeriesFramework/client"/>
+    </genClasses>
+    <genClasses ecoreClass="fastext.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="fastext.ecore#//ObservationPlatform">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fastext.ecore#//ObservationPlatform/sensors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fastext.ecore#//ObservationPlatform/quality"/>
+    </genClasses>
+    <genClasses ecoreClass="fastext.ecore#//Sensor">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fastext.ecore#//Sensor/measures"/>
+    </genClasses>
+    <genClasses ecoreClass="fastext.ecore#//MeasuredVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//MeasuredVariable/unit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fastext.ecore#//MeasuredVariable/produces"/>
+    </genClasses>
+    <genClasses ecoreClass="fastext.ecore#//TimeSeries">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//TimeSeries/startTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//TimeSeries/endTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//TimeSeries/period"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//TimeSeries/id"/>
+    </genClasses>
+    <genClasses ecoreClass="fastext.ecore#//DataRequest">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//DataRequest/numberOfValues"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fastext.ecore#//DataRequest/clientScale"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//DataRequest/aggregationPolicy"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fastext.ecore#//DataRequest/selectedTimeSeries"/>
+    </genClasses>
+    <genClasses ecoreClass="fastext.ecore#//Architecture">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fastext.ecore#//Architecture/computers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fastext.ecore#//Architecture/networks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Architecture/rawDataThreshold"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Architecture/preComputedDataThreshold"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Architecture/pingTime"/>
+    </genClasses>
+    <genClasses ecoreClass="fastext.ecore#//Computer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Computer/os"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Computer/ramMemory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Computer/storageMemory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Computer/cpuNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Computer/cpuFrequency"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Computer/cpuCoresNumber"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fastext.ecore#//Computer/computerServices"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fastext.ecore#//Computer/computerInterfaces"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fastext.ecore#//Computer/deployment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Computer/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Computer/password"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="fastext.ecore#//Service"/>
+    <genClasses ecoreClass="fastext.ecore#//Database">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Database/dbms"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Database/port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Database/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Database/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Database/dataDirectory"/>
+    </genClasses>
+    <genClasses ecoreClass="fastext.ecore#//WebServer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//WebServer/port"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fastext.ecore#//WebServer/proxy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//WebServer/type"/>
+    </genClasses>
+    <genClasses ecoreClass="fastext.ecore#//Container">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fastext.ecore#//Container/services"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fastext.ecore#//Container/containerInterface"/>
+    </genClasses>
+    <genClasses ecoreClass="fastext.ecore#//Network">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Network/prefix"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Network/mask"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Network/gateway"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//Network/domainName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fastext.ecore#//Network/interfaces"/>
+    </genClasses>
+    <genClasses ecoreClass="fastext.ecore#//NetworkInterface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//NetworkInterface/ipAddress"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="fastext.ecore#//DataSource"/>
+    <genClasses ecoreClass="fastext.ecore#//File">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//File/path"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="fastext.ecore#//Scale"/>
+    <genClasses ecoreClass="fastext.ecore#//CalendarScale">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//CalendarScale/periods"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//CalendarScale/factors"/>
+    </genClasses>
+    <genClasses ecoreClass="fastext.ecore#//FactorScale">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//FactorScale/factor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//FactorScale/numberOfZooms"/>
+    </genClasses>
+    <genClasses ecoreClass="fastext.ecore#//ClientApi">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//ClientApi/userTime"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fastext.ecore#//ClientApi/requests"/>
+    </genClasses>
+    <genClasses ecoreClass="fastext.ecore#//DockerDeployment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//DockerDeployment/directory"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fastext.ecore#//DockerDeployment/containers"/>
+    </genClasses>
+    <genClasses ecoreClass="fastext.ecore#//QualityLevel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//QualityLevel/qMin"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fastext.ecore#//QualityLevel/qMax"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,65 @@
+HwArchitecture
+{
+	Computers
+	{
+		Computer server(LINUX, 65536, 524288, 1-12, 3600, "userS", "passwordS")
+		{
+			networkInterfaces "net_1.if_1";
+			docker dockerConfig("/path/to/docker")
+			{
+				dbContainer("net_1.if_1")
+				{
+					ts(TIME_SCALE_DB, 5432, "userDb", "passwordDb", "/path/to/data");
+				}
+				webServerContainer("net_1.if_1")
+				{
+					apache(APACHE, 8080, "dbContainer.ts");
+				}
+			}
+		}
+		Computer client(WINDOWS, 16384, 262144, 1-8, 2800, "userC", "passwordC")
+		{
+			networkInterfaces "net_1.if_2";
+		}
+	}
+	Networks
+	{
+		Network net_1("192.168.1.0", "255.255.255.0", "192.168.1.255", "domainName")
+		{
+			interface if_1("192.168.1.10");
+			interface if_2("192.168.1.20");
+		}
+	}
+}
+
+Data
+{
+	Sensors
+	{
+		thermometer measures
+		{
+			temperature in DEGREE_CELSIUS;
+			TimeSeries temperatureTimeSeries
+			{
+				startTime "2010-01-01T00:00:00";
+		  		endTime "2019-01-01T00:00:00";
+		  		period 0.04;
+		  		database "server.dockerConfig.dbContainer.ts";
+		  	}
+		}
+	}
+}
+
+Tools
+{
+	Tool viewer("thermometer.temperature.temperatureTimeSeries" on "client", 1000, 400, 10) 
+	{
+		NAVIGATION_DIRECTIONS;
+		scale scale_1([30 MINUTE, 1 HOUR, 12 HOUR, 1 DAY, 7 DAY, 31 DAY]);
+		userTime 250.0;
+		// Performance properties
+		pingTime 0.0;
+		rawDataThreshold 0.0;
+		preComputedDataThreshold 0.0; 
+	}
+}

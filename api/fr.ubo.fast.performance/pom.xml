@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>fr.ubo.fast</groupId>
+	<artifactId>fr.ubo.fast.performance</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+		<project.build.source-encoding>UTF-8</project.build.source-encoding>
+		<fast-common.version>0.0.1-SNAPSHOT</fast-common.version>
+		<fast-client.version>0.0.1-SNAPSHOT</fast-client.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>fr.ubo.fast</groupId>
+			<artifactId>fr.ubo.fast.common</artifactId>
+			<version>${fast-common.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>fr.ubo.fast</groupId>
+			<artifactId>fr.ubo.fast.client</artifactId>
+			<version>${fast-client.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

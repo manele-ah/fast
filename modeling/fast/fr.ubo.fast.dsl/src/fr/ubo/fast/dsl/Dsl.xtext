@@ -1,0 +1,194 @@
+grammar fr.ubo.fast.dsl.Dsl with org.eclipse.xtext.common.Terminals
+
+import "http://fr.ubo.fast" 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+
+TimeSeriesFramework returns TimeSeriesFramework:
+		architecture=Architecture
+		observationPlatform=ObservationPlatform
+		'Tools' '{' clients+=VisualizationClient (clients+=VisualizationClient)* '}';
+
+VisualizationClient returns VisualizationClient:
+	MinMaxVisualizationClient;
+
+Scale returns Scale:
+	CalendarScale | FactorScale;
+
+DataSource returns DataSource:
+	Database | File;
+
+Service returns Service:
+	Database | WebServer | File;
+
+ObservationPlatform returns ObservationPlatform:
+	'Data' 
+	'{'
+		'Sensors' '{' sensors+=Sensor (sensors+=Sensor)* '}'
+	'}';
+
+Architecture returns Architecture:
+	'HwArchitecture' 
+	'{'
+		'Computers' '{' computers+=Computer (computers+=Computer)* '}'
+		'Networks' '{' networks+=Network (networks+=Network)* '}'
+	'}';
+
+MinMaxVisualizationClient returns MinMaxVisualizationClient:
+	'Tool' name=EString
+	'('
+		selectedTimeSeries=[TimeSeries|EString] 'on'
+		clientComputer=[Computer|EString] ','
+		chartWidth=EInt ','
+		chartHeight=EInt ','
+		axisFactor=EInt
+	')'
+	'{'
+		userPolicy=UserPolicy ';'
+		clientScale=Scale ';'
+		'userTime' userTime=EDouble ';'
+		'pingTime' pingTime=EDouble ';'
+		'rawDataThreshold' rawDataThreshold=EDouble ';'
+		'preComputedDataThreshold' preComputedDataThreshold=EDouble ';'
+	'}';
+
+TimeSeries returns TimeSeries:
+	'TimeSeries' name=EString
+	'{'
+		'startTime' startTime=EString ';'
+		'endTime' endTime=EString ';'
+		'period' period=EDouble ';'
+		'database' timeSeriesDataSource=[DataSource|EString] ';'
+	'}';
+
+Sensor returns Sensor:
+	name=EString 'measures'
+	'{'
+		measures+=MeasuredVariable (measures+=MeasuredVariable )* 
+	'}';
+
+MeasuredVariable returns MeasuredVariable:
+ 	name=EString  'in' unit=MeasurementDataUnit ';'
+ 	produces=TimeSeries;
+
+Database returns Database:
+	name=EString
+	'('
+		dbms=DatabaseType ','
+		port=EInt ','
+		username=EString ','
+		password=EString ','
+		dataDirectory=EString
+	')';
+
+File returns File:
+	name=EString
+	'('
+		path=EString
+	')';
+
+Computer returns Computer:
+	'Computer' name=EString
+	'('
+		os=OSType ','
+		ramMemory=EInt ','
+		storageMemory=EInt ','
+		cpuNumber=EInt '-' cpuCoresNumber=EInt ','
+		cpuFrequency=EInt ','
+		username=EString ','
+		password=EString
+	')' 
+	'{'
+		'networkInterfaces' computerInterfaces+=[NetworkInterface|EString] (computerInterfaces+=[NetworkInterface|EString])* ';' 
+		(computerServices+=Service ';' (computerServices+=Service ';')*)?
+		(deployment=DockerDeployment)?
+	'}';
+
+DockerDeployment returns DockerDeployment:
+	'docker' name=EString
+	'('
+		directory=EString
+	')' 
+	'{'
+		containers+=Container (containers+=Container)*
+	'}'; 
+
+Network returns Network:
+	'Network' name=EString
+	'('
+		prefix=EString ','
+		mask=EString ','
+		gateway=EString ','
+		domainName=EString
+	')'
+	'{'
+		interfaces+=NetworkInterface ';' (interfaces+=NetworkInterface ';')* 
+	'}';
+
+Container returns Container:
+	name=EString
+	'('
+		containerInterface=[NetworkInterface|EString]
+	')'
+	'{'
+		services+=Service ';' (services+=Service ';')*
+	'}' ;
+
+NetworkInterface returns NetworkInterface:
+	'interface' name=EString
+	'('
+		ipAddress=EString
+	')';
+
+WebServer returns WebServer:
+	name=EString
+	'('
+		type=WebServerType ','
+		port=EInt
+		(',' proxy+=[DataSource|EString] (',' proxy+=[DataSource|EString])*)?
+	')';
+
+CalendarScale returns CalendarScale:
+	'scale' name=EString
+	'('
+		'[' factors+=ELong periods+=Period (',' factors+=ELong periods+=Period)* ']'
+	')';
+
+FactorScale returns FactorScale:
+	'scale' name=EString
+	'('
+		factor=EInt ','
+		zoomsNumber=EInt
+	')';
+
+
+enum MeasurementDataUnit returns MeasurementDataUnit:
+				METER = 'METER' | METER_PER_SECOND = 'METER_PER_SECOND' | METER_PER_SECOND_SQUARED = 'METER_PER_SECOND_SQUARED' | DEGREE_CELSIUS = 'DEGREE_CELSIUS' | RADIAN = 'RADIAN' | RADIAN_PER_SECOND = 'RADIAN_PER_SECOND' | BAR = 'BAR' | LITER = 'LITER' | GRAM = 'GRAM' | NONE = 'NONE';
+
+enum Period returns Period:
+				MILLISECOND = 'MILLISECOND' | SECOND = 'SECOND' | MINUTE = 'MINUTE' | HOUR = 'HOUR' | DAY = 'DAY' | MONTH = 'MONTH' | YEAR = 'YEAR';
+
+enum OSType returns OSType:
+				LINUX = 'LINUX' | WINDOWS = 'WINDOWS' | MAC_OS = 'MAC_OS';
+
+enum DatabaseType returns DatabaseType:
+				TIME_SCALE_DB = 'TIME_SCALE_DB' | INFLUX_DB = 'INFLUX_DB';
+
+enum UserPolicy returns UserPolicy:
+				NAVIGATION_DIRECTIONS = 'NAVIGATION_DIRECTIONS';
+
+enum WebServerType returns WebServerType:
+				GEO_SERVER = 'GEO_SERVER' | APACHE = 'APACHE';
+
+
+ELong returns ecore::ELong:
+	'-'? INT;
+
+EString returns ecore::EString:
+	STRING | ID;
+
+EDouble returns ecore::EDouble:
+	'-'? INT? '.' INT (('E'|'e') '-'? INT)?;
+
+EInt returns ecore::EInt:
+	'-'? INT;
